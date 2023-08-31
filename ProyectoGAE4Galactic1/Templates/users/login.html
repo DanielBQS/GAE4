@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y registro - Galactic Gamer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main>
+        <!-- Contenedor en donde se encuentran todos los demas contenedores del diseño del login -->
+        <div class="contenedor__todo">
+            <div class="caja__trasera">
+                <!-- Esta es la parte de atrás del login -->
+                <div class="caja__trasera-login">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para entrar en la página</p>
+                    <button id="btn_iniciarSesion">Iniciar Sesión</button>
+                </div>
+
+                <!-- Esta es la parte de atrás del registro -->
+                <div class="caja__trasera-register">
+                    <h3>¿Aún no tienes cuenta?</h3>
+                    <p>Regístrate para que puedas iniciar sesión</p>
+                    <button id="btn_Registrarse">Registrarse</button>
+                </div>
+            </div>
+
+            <!-- Estructura de los formularios -->
+            <div class="contenedor__Login-registrer" id="contenedor__Login-registrer">
+                <!-- Login -->
+                <form action="" method="POST" class="formulario__login" id="formulario__login">
+                    {% csrf_token %}
+                    <h2>Iniciar Sesión</h2>
+                    <!-- Grupo: CorreoInicioSecion -->
+                    <div class="formulario__grupo" id="grupo__CorreoInicioS">
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="correoInicio" id="correoInicio" placeholder="Nombre usuario" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El correo no existe o está mal escrito.</p>
+                    </div>
+                    <!-- Grupo: ContraInicioSecion -->
+                    <div class="formulario__grupo" id="grupo__ContraseñaInicio">
+                        <div class="formulario__grupo-input">
+                            <input type="password" class="formulario__input" name="contraInicio" id="contraInicio" placeholder="Contraseña" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Contraseña incorrecta.</p>
+                    </div>
+
+                    <div class="formulario__grupo formulario__grupo-btn-entrar">
+                        <button type="submit" class="formulario__btn">Entrar</button>  
+                        <br>
+                        
+                        <p class="formulario__mensaje-bienvenido" id="formulario__mensaje-bienvenido">¡Bienvenido a Galactic Gamer!</p>
+                    </div>   
+                    {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                    {% endif %}
+                </form>
+
+                <!-- Registro -->
+                <form action="" method="POST" class="formulario__Register" id="formulario__Register">
+                    
+                    <h2>Registrarse</h2>
+                    <!-- Grupo: Nombre -->
+                    <div class="formulario__grupo" id="grupo__Nombre">
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre Completo" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El nombre solo puede contener letras.</p>
+                    </div>
+                    <!-- Grupo: Fecha de Nacimiento -->
+                    <div class="formulario__grupo" id="grupo__FechaNacimiento">
+                        <div class="formulario__grupo-input">
+                            <input type="date" class="formulario__input" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento Ej: 17/01/1999" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Fecha de nacimiento inválida.</p>
+                    </div>
+                    <!-- Grupo: Correo -->
+                    <div class="formulario__grupo" id="grupo__Correo">
+                        <div class="formulario__grupo-input">
+                            <input type="email" class="formulario__input" name="correo" id="correo" placeholder="Correo Electrónico" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El correo no es válido.</p>
+                    </div>
+                    <!-- Grupo: Dirección -->
+                    <div class="formulario__grupo" id="grupo__Direccion">
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="direccion" id="direccion" placeholder="Dirección" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La dirección es invalida asegurate que solo tenga (Letras, números, espacios, guiones, almohadillas, barras y puntos).</p>
+                    </div>
+                    <!-- Grupo: Usuario -->
+                    <div class="formulario__grupo" id="grupo__Usuario">
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Nombre de Usuario" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El nombre de usuario debe ser máximo de 20 dígitos y no debe tener símbolos.</p>
+                    </div>
+                    <!-- Grupo: Contraseña -->
+                    <div class="formulario__grupo" id="grupo__Contraseña">
+                        <div class="formulario__grupo-input">
+                            <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña" required>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La contraseña debe tener entre 4 y 10 dígitos.</p>
+                    </div>
+                    
+                    <br>
+                    <!-- Agregar el mensaje de error aquí -->
+                    <div id="mensajeError" class="mensaje-error"></div>
+
+                    <div class="formulario__grupo formulario__grupo-btn-registrar">
+                        <button type="submit" class="formulario__btn" id="btnRegistrarse">Registrarse</button>  
+                        <br>
+                        
+                    </div>
+
+                </form>
+                
+            </div>
+        </div>
+    </main>
+    <script src="{% static 'js/validacion.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+     
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

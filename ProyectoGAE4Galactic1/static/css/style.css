@@ -1,0 +1,243 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+/* Diseño de la parte de atras*/
+  body{
+    background-image: linear-gradient(to bottom, rgba(37, 159, 184, 0.9), rgba(37, 159, 184, 0.6)), url("{% static 'img/fn2.png.png' %}");
+    /*background-image: url("{% static 'img/fn2.png' %}");*/
+    background-size: cover;
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  main{
+    width: 100%;
+    padding: 50px;
+    margin: auto;
+    margin-top: 250px;
+
+  }
+
+  .contenedor__todo{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+  }
+  .caja__trasera{
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    background-color: rgba(86, 87, 86, 0.5 );
+  }
+
+  .caja__trasera div{
+    margin: 100px 40px;
+    color: white;
+    transition: all 500ms;
+  }
+  .caja__trasera div p,
+  .caja__trasera div button{
+    margin-top: 30px;
+  }
+
+  .caja__trasera div h3{
+    font-weight: 400;
+    font-size: 26px;
+  }
+
+  .caja__trasera button{
+    padding: 10px 40px;
+    border: 2px solid #fff;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+  }
+  .caja__trasera button:hover{
+    background: #fff;
+    color: #259FB8;
+  }
+   
+  /* Diseño de los formularios de inicio de sesion y registro*/
+  .contenedor__Login-registrer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    top:  -185px;
+    left: 10px;
+
+    transition: left 500ms cubic-bezier(0.175,0.885, 0.320, 1.275);
+  }
+  /*Diseño de iconos y mensajes de error*/
+  .formulario__input-error{
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+  }
+  .formulario__input-error-activo{
+    
+    display: block;
+  }
+  .formulario__grupo-input{
+    position: relative;
+  }
+  .formulario__validacion-estado{
+    position: absolute;
+    right: 4PX;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 10px;
+    opacity: 0;
+  }
+  .formulario__mensaje{
+    height: 25px;
+    line-height: 30px;
+    background: #F66060;
+    padding: 0px 10px;
+    border-radius: 3px;
+    display: none;
+
+  }
+  .formulario__mensaje-activo{
+    display: block;
+
+  }
+  .formulario__mensaje p{
+    margin: 0;
+  }
+  .formulario__mensaje-exito{
+    font-size: 14px;
+    color: #119200;
+    display: none;
+  }
+  .formulario__mensaje-exito-activo{
+    display: block;
+  }
+  .formulario__mensaje-bienvenido{
+    font-size: 14px;
+    color: #119200;
+    display: none;
+  }
+  .formulario__mensaje-bienvenido-activo{
+    display: block;
+  }
+
+/********************************************************************************************************/
+  /**Estilo para la validacion**/
+  .formulario__grupo-correcto .formulario__validacion-estado{
+    color: #1ed12d;
+    opacity: 1;
+    
+  }
+  .formulario__grupo-incorrecto .formulario__validacion-estado{
+    color: #bb2929;
+    opacity: 1;
+    bottom: 15px;
+  }
+  .formulario__grupo-incorrecto .formulario__input {
+     border: 1px solid #bb2929;
+  } 
+/**********************************************************************************************************/
+.contenedor__Login-registrer form{
+    width: 100%;
+    padding: 80px 20px;
+    background: #fff;
+    position: absolute;
+    border-radius: 20px;
+  }
+  .contenedor__Login-registrer form h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #259FB8;
+
+  }
+
+  .contenedor__Login-registrer form input{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline:  none;
+  }
+  .formulario__grupo-btn-registrar{
+     align-items: center;
+     display: flex;
+     flex-direction: column;
+  }
+  .formulario__grupo-btn-entrar{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .contenedor__Login-registrer form button{
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background: #259FB8 ;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    
+    
+  }
+  .formulario__login{
+    opacity: 1;
+    display: block;
+  }
+  .formulario__Register{
+    display: none;
+  }
+  /* Agrega estilo al mensaje de error */
+  .mensaje-error {
+    color: red; /* Color rojo */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    text-align: center; /* Centrar el texto */
+    margin-top: 10px; /* Margen superior para separar del botón */
+  }
+  /* Parte en la que funciona el reponsive Desing para que se adapte*/
+
+  @media screen and (max-width:850px){
+    main{
+        margin-top: 50px;
+    }
+    .caja__trasera{
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto; 
+    }
+    .caja__trasera div{
+        margin: 0px;
+        position: absolute;
+    }
+    /* Parte en la que funciona el reponsive Desing de los formularios*/
+
+    .contenedor__Login-registrer{
+        top:-10px;
+        left: -5px;
+        margin: auto;
+    }
+
+    .contenedor__Login-registrer form{
+        position: relative;
+    }
+  }
+    
+  
