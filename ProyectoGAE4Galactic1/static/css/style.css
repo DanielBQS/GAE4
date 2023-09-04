@@ -81,6 +81,8 @@
 
     transition: left 500ms cubic-bezier(0.175,0.885, 0.320, 1.275);
   }
+  /*menajes de alerta python*/
+
   /*Diseño de iconos y mensajes de error*/
   .formulario__input-error{
     font-size: 12px;
@@ -184,8 +186,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    
   }
-  .contenedor__Login-registrer form button{
+  .formulario__btn{
     padding: 10px 40px;
     margin-top: 40px;
     border: none;
@@ -195,8 +198,8 @@
     cursor: pointer;
     outline: none;
     
-    
   }
+  
   .formulario__login{
     opacity: 1;
     display: block;
@@ -211,6 +214,7 @@
     text-align: center; /* Centrar el texto */
     margin-top: 10px; /* Margen superior para separar del botón */
   }
+
   /* Parte en la que funciona el reponsive Desing para que se adapte*/
 
   @media screen and (max-width:850px){
