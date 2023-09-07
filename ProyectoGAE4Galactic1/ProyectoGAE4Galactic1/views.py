@@ -11,6 +11,7 @@ def index(request):
         #context
     })
 
+
 def login_view(request):
     if request.method== 'POST':
         username= request.POST.get('correoInicio')
@@ -28,4 +29,19 @@ def login_view(request):
     return render(request,'users/login.html', {
 
     })
-    
+def HDD_view (request):
+    return render(request,'Almacenamiento/HDD.html',  {
+        #context
+    })
+def PQRSC_view (request):
+    return render(request,'PQRS/PQRScliente/IndexPQRS.html',  {
+        #context
+    })
+def PQRSE_view (request):
+    return render(request,'PQRS/PQRSRespuesta/indexConsulta.html',  {
+        #context
+    })
+def Dashboard_view (request):
+    return render(request,'DashboardEmpleado/index.html',  {
+        #context
+    })

@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'Usuarios',
+    'PQRS',
+    'Ventas',
+    'Inventario',
+    'Proveedores',
     'colorfield',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -130,3 +135,8 @@ STATICFILES_DIRS=(
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Configuración de admin_interface
+#ADMIN_INTERFACE_SETTINGS = {
+#    'logo': '/static/img/logo.png',  # Ruta a tu archivo de imagen
+    # Otras opciones de configuración de admin_interface, si las tienes
+#}
