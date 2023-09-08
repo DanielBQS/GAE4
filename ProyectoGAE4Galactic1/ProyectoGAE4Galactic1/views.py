@@ -37,11 +37,91 @@ def PQRSC_view (request):
     return render(request,'PQRS/PQRScliente/IndexPQRS.html',  {
         #context
     })
-def PQRSE_view (request):
-    return render(request,'PQRS/PQRSRespuesta/indexConsulta.html',  {
+    
+def NVME_view (request):
+    return render(request,'Almacenamiento/NVME.html', {
         #context
     })
-def Dashboard_view (request):
-    return render(request,'DashboardEmpleado/index.html',  {
+    
+def SSD_view (request):
+    return render(request,'Almacenamiento/SSD.html', {
         #context
     })
+    
+def USB_view (request):
+    return render(request,'Almacenamiento/USB.html', {
+        #context
+    })
+    
+def Mouse_view (request):
+    return render(request,'Perifericos/Mouse.html', {
+        #context
+    })
+    
+def Teclado_view (request):
+    return render(request,'Perifericos/Teclado.html', {
+        #context
+    })
+
+def Audifonos_view (request):
+    return render(request,'Perifericos/Audifonos.html', {
+        #context
+    })
+    
+def Parlantes_view (request):
+    return render(request,'Perifericos/Parlantes.html', {
+        #context
+    })
+    
+#Torres
+
+def Board_view (request):
+    return render(request,'Torres/Board.html', {
+        #context
+    })
+    
+def Chasis_view (request):
+    return render(request,'Torres/Chasis.html', {
+        #context
+    })
+    
+        
+def Fuentes_view (request):
+    return render(request,'Torres/Fuentes.html', {
+        #context
+    })
+    
+def Graficas_view (request):
+    return render(request,'Torres/Graficas.html', {
+        #context
+    })
+    
+def Procesador_view (request):
+    return render(request,'Torres/Procesador.html', {
+        #context
+    })
+    
+    
+def Ram_view (request):
+    return render(request,'Torres/Ram.html', {
+        #context
+    })
+
+def Refrigeracion_view (request):
+    return render(request,'Torres/Refrigeracion.html', {
+        #context
+    })
+
+
+def Monitores_view (request):
+    return render(request,'Monitores/Monitores.html', {
+        #context
+    })
+    
+def Portatiles_view (request):
+    return render(request,'Portatiles/Portatiles.html', {
+        #context
+    })
+
+
+
