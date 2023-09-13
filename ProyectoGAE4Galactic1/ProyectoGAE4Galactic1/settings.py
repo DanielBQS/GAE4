@@ -42,10 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'Usuarios',
-    'PQRS',
-    'Ventas',
-    'Inventario',
-    'Proveedores',
     'colorfield',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -140,3 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #    'logo': '/static/img/logo.png',  # Ruta a tu archivo de imagen
     # Otras opciones de configuración de admin_interface, si las tienes
 #}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

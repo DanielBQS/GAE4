@@ -6,9 +6,16 @@ from django.contrib import messages
 from django.contrib.auth import login 
 from django.contrib.auth import authenticate
 
+from core.models import Producto
+
 def index(request):
+    
+    products = Producto.objects.all().order_by('id')
+    
     return render(request,'index.html',  {
-        #context
+        'message': 'Listado de productos',
+        'title': 'Producto',
+        'products' : products,
     })
 
 
@@ -123,5 +130,7 @@ def Portatiles_view (request):
         #context
     })
 
-
-
+def carrito_view (request):
+    return render(request,'carrito.html', {
+        #context
+    })

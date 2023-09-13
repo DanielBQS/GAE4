@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+
 from. import views
 
 urlpatterns = [
@@ -29,7 +31,6 @@ urlpatterns = [
     path('Monitores/Monitores', views.Monitores_view, name='Monitores'),
 #Portatiles
     path('Portatiles/Portatiles', views.Portatiles_view, name='Portatiles'),
-
-
-    
+#carrito
+    path('carrito', views.carrito_view, name='carrito'),    
 ]

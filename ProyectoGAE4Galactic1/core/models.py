@@ -1,19 +1,6 @@
 from django.db import models
 from datetime import datetime
 
-class Rol(models.Model):
-    nombre_rol = models.CharField(max_length=20, verbose_name='Rol')
-
-    def __str__(self):
-        return self.nombre_rol
-
-    class Meta:
-        verbose_name = 'Rol'
-        verbose_name_plural = 'Roles'
-        db_table = 'rol'
-        ordering = ['nombre_rol']
-        app_label = 'core' 
-
 class Cliente(models.Model):
     ESTADO_CHOICES = [
         ('Activo', 'Activo'),
@@ -43,7 +30,6 @@ class Cliente(models.Model):
         verbose_name_plural = 'Clientes'
         db_table = 'cliente'
         ordering = ['nombre_cliente']
-        app_label = 'Usuarios' 
 
 class Empleado(models.Model):
     ESTADO_CHOICES = [
@@ -65,7 +51,6 @@ class Empleado(models.Model):
         default='Activo',
         verbose_name='Estado del empleado'
     )
-    rol = models.ForeignKey(Rol, on_delete=models.CASCADE, verbose_name='Rol')
 
     def __str__(self):
         return self.nombre_empleado
@@ -75,7 +60,6 @@ class Empleado(models.Model):
         verbose_name_plural = 'Empleados'
         db_table = 'empleado'
         ordering = ['nombre_empleado']
-        app_label = 'Usuarios' 
 
 class PQRS(models.Model):
     # Definir las opciones para el campo tipo "select" de Tipo de PQRS
@@ -121,7 +105,6 @@ class PQRS(models.Model):
         verbose_name_plural = 'PQRSs'
         db_table = 'pqrs'
         ordering = ['tipoPQRS']
-        app_label = 'PQRS' 
 
 class PQRSRespuesta(models.Model):
     respuesta = models.TextField(max_length=100, verbose_name='Respuesta')
@@ -151,7 +134,6 @@ class PQRSRespuesta(models.Model):
         verbose_name_plural = 'Respuestas de PQRS'
         db_table = 'pqrs_respuesta'
         ordering = ['respuesta']
-        app_label = 'PQRS' 
 
 class Proveedor(models.Model):
     ESTADO_CHOICES = [
@@ -180,7 +162,6 @@ class Proveedor(models.Model):
         verbose_name_plural = 'Proveedores'
         db_table = 'proveedor'
         ordering = ['nombre_proveedor']
-        app_label = 'Proveedores' 
 
 class TipoProducto(models.Model):
     nombre_Producto = models.CharField(max_length=20, verbose_name='Nombre del producto')
@@ -193,7 +174,6 @@ class TipoProducto(models.Model):
         verbose_name_plural = 'Tipos de Productos'
         db_table = 'tipo_producto'
         ordering = ['nombre_Producto']
-        app_label = 'Inventario' 
 
 class Marca(models.Model):
     nombre_marca = models.CharField(max_length=20, verbose_name='Nombre de Marca')
@@ -206,7 +186,7 @@ class Marca(models.Model):
         verbose_name_plural = 'Marcas'
         db_table = 'marca'
         ordering = ['nombre_marca']
-        app_label = 'Inventario' 
+    
 
 class Producto(models.Model):
     ESTADO_CHOICES = (
@@ -220,6 +200,7 @@ class Producto(models.Model):
     Estado_Producto = models.TextField(max_length=20, choices=ESTADO_CHOICES, verbose_name='Estado del producto')
     tipo_producto = models.ForeignKey(TipoProducto, on_delete=models.CASCADE, verbose_name='Tipo de producto')
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE, verbose_name='Marca del producto')
+    image= models.ImageField(upload_to='productos/', verbose_name='Imagen del producto',default='productos/default.jpg')
 
     def __str__(self):
         return self.nombre_producto
@@ -229,7 +210,9 @@ class Producto(models.Model):
         verbose_name_plural = 'Productos'
         db_table = 'producto'
         ordering = ['nombre_producto']
-        app_label = 'Inventario' 
+        
+        
+    
 
 class Inventario(models.Model):
     Cantidad_productos = models.IntegerField(verbose_name='Cantidad de productos')
@@ -243,7 +226,6 @@ class Inventario(models.Model):
         verbose_name_plural = 'Inventarios'
         db_table = 'inventario'
         ordering = ['id']
-        app_label = 'Inventario' 
 
 class Venta(models.Model):
     id_transaccion = models.CharField(max_length=20, verbose_name='ID de transacción')
@@ -260,7 +242,6 @@ class Venta(models.Model):
         verbose_name_plural = 'Ventas'
         db_table = 'venta'
         ordering = ['id']
-        app_label = 'Ventas' 
 
 class DetalleVenta(models.Model):
     PrecioVenta = models.BigIntegerField(verbose_name='Precio de venta')
@@ -276,4 +257,3 @@ class DetalleVenta(models.Model):
         verbose_name_plural = 'Detalles de Venta'
         db_table = 'detalle_venta'
         ordering = ['id']
-        app_label = 'Ventas' 
