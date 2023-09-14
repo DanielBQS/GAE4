@@ -1,5 +1,10 @@
 from django.contrib import admin
-from core.models import PQRS, PQRSRespuesta
-
-admin.site.register(PQRS)
-admin.site.register(PQRSRespuesta)
+from .models import PQRS
+@admin.register(PQRS)
+class PQRSAdmin(admin.ModelAdmin):
+    list_display = ('tipoPQRS', 'fechaPQRS', 'cliente','DescripcionPQRS','EstadoPQRS')
+    #list_display_links = ('name')
+    list_editable = ('EstadoPQRS',)
+    search_fields = ('DescripcionPQRS',)
+    list_filter = ('EstadoPQRS','fechaPQRS','tipoPQRS',)
+    list_per_page = 5

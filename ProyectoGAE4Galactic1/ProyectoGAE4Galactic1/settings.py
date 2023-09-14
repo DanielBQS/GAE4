@@ -43,9 +43,6 @@ INSTALLED_APPS = [
     'core',
     'Usuarios',
     'PQRS',
-    'Ventas',
-    'Inventario',
-    'Proveedores',
     'colorfield',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -62,7 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ProyectoGAE4Galactic1.urls'
-
+AUTH_USER_MODEL= 'Usuarios.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -140,3 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #    'logo': '/static/img/logo.png',  # Ruta a tu archivo de imagen
     # Otras opciones de configuración de admin_interface, si las tienes
 #}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

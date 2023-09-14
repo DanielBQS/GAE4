@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <h2>Mis PQRS</h2>
+    </div>
+    <div class="text-end">
+        <!-- Formulario de filtro -->
+        <form method="get">
+            {% csrf_token %}
+            {{ form.estado.label_tag }}
+            {{ form.estado }}
+            <button type="submit" class="btn btn-primary" style="background-color: #259FB8;">Filtrar</button>
+        </form>
+    </div>
+    <!-- Tabla para mostrar las PQRS -->
+    <table class="table table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>Tipo de PQRS</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre las PQRS del usuario logeado -->
+            {% for pqrs in pqrs_list %}
+                <tr>
+                    <td>{{ pqrs.tipoPQRS }}</td>
+                    <td>{{ pqrs.fechaPQRS }}</td>
+                    <td>{{ pqrs.DescripcionPQRS }}</td>
+                    <td>{{ pqrs.EstadoPQRS }}</td>
+                    <td>
+                        <a href="{% url 'PQRSActualizar' pqrs.pk %}" class="btn btn-warning">Actualizar</a>
+                        
+                    </td>
+                </tr>
+            {% empty %}
+                <!-- Mensaje para el caso en que el usuario no tenga PQRS registradas -->
+                <tr>
+                    <td colspan="4" class="text-center">No tienes PQRS registradas.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if messages %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
