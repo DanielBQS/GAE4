@@ -1,14 +1,22 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import include
-
 from. import views
 
 urlpatterns = [
     path('',views.index, name='index'),
     path('admin/', admin.site.urls),
+#login/register
     path('usuarios/login', views.login_view, name='login'),
-    path('PQRS/PQRScliente', views.PQRSC_view, name='PQRScliente'),
+    path('usuarios/logout', views.logout_view, name='logout'),
+    path('usuarios/register', views.register_view, name='register'),
+#PQRS
+    path('PQRS', views.PQRSC_view, name='PQRScliente'),
+    path('PQRS/PQRSConsulta', views.PQRSConsultar_view, name='PQRSConsulta'),
+    path('PQRS/PQRSActualizar/<int:pk>/', views.PQRSActualizar_view, name='PQRSActualizar'),
+    path('PQRS/PQRSEliminar/<int:pk>/', views.eliminar_pqrs, name='PQRSEliminar'),
 #almacenamiento
     path('Almacenamiento/HDD', views.HDD_view, name='HDD'),
     path('Almacenamiento/NVME', views.NVME_view, name='NVME'),
@@ -31,6 +39,15 @@ urlpatterns = [
     path('Monitores/Monitores', views.Monitores_view, name='Monitores'),
 #Portatiles
     path('Portatiles/Portatiles', views.Portatiles_view, name='Portatiles'),
-#carrito
-    path('carrito', views.carrito_view, name='carrito'),    
+
+#Productview
+    path ('productos/', include('core.urls')),
+    
+    path('carrito/', include('carts.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    
+    

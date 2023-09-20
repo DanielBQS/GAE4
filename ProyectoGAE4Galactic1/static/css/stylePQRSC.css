@@ -3,6 +3,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Estilo para la barra de navegación */
+.navbar {
+    position: absolute; /* Establece la posición absoluta */
+    top: 0; /* Coloca la barra en la parte superior de la página */
+    width: 100%; /* Ocupa todo el ancho de la página */
+    z-index: 1000; /* Asegura que esté en la parte superior del apilamiento */
+    background-color: #333; /* Cambia el color de fondo según tu preferencia */
+}
+
+/* Estilo para el contenido principal debajo de la barra de navegación */
+.content {
+    padding-top: 60px; /* Ajusta el espacio superior para evitar que el contenido quede detrás de la barra */
+    /* Agrega cualquier otro estilo de diseño que necesites para el contenido principal */
+}
 
 body{
     font-family: Arial, Helvetica, sans-serif;
@@ -96,21 +110,12 @@ select{
 textarea {
     margin-bottom: 10px;
 }
-.btn{
-    padding: 17px 15px;
-    width: 180px;
-    align-self: center;
-    text-transform: capitalize;
-    color: #F5FCFF;
-    font-size: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    background: linear-gradient(
-        90deg,
-        rgba(67,151,239,1) 0%,
-        rgba(2,227,211,1) 100%
-    );
+.btn-group{
+ 
+    margin-top: 10px;
+  
 }
+
 .success{
     position: absolute;
     top: 50px;
@@ -124,7 +129,21 @@ textarea {
     color: #e02d00;
     font-size: 18px;
 }
+/* Estilo básico para el botón ver PQRS*/
+.ver-pqrs-button {
+    text-align: right; 
+}
 
+.rounded-button {
+    margin-top: 30px;
+    display: inline-block;
+    font-size: 14px; 
+    text-decoration: none;
+    color: #fff; 
+   
+   
+}
+/*Responsive*/
 @media (max-width: 991px){
     body{
         padding: 30px;
@@ -139,5 +158,17 @@ textarea {
     }
     textarea{
         margin-bottom: 30px;
+    }
+}
+/* Estilo para hacer que el botón se ajuste al ancho del contenedor */
+@media (max-width: 991px) {
+    .ver-pqrs-button {
+        text-align: center; /* Centra el botón cuando la pantalla es pequeña */
+    }
+
+    .rounded-button {
+        display: block; /* Cambia a un estilo de bloque para ocupar todo el ancho disponible */
+        width: 100%; /* Ajusta el ancho al 100% del contenedor */
+        margin-top: 10px; /* Agrega un espacio superior para separarlo de otros elementos */
     }
 }

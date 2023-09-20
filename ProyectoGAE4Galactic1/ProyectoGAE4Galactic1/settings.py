@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'carts',
     'Usuarios',
+    'PQRS',
     'colorfield',
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -58,7 +60,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ProyectoGAE4Galactic1.urls'
-
+AUTH_USER_MODEL= 'Usuarios.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

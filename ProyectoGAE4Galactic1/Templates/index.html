@@ -1,125 +1,27 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galactic Gamer</title>
-    <link rel="stylesheet" href="../static/css/a.css">
-    
-</head>
-<body>
-    <header class="header">
-
-        <div class="logo"><img src="../static/img/logo.png" alt="z3a" class="z3a"></div>
-        
-        <input type="checkbox" id="toggle">
-        <label for="toggle"><img src="Img/menu.svg" alt="menu"></label>
-
-        <nav class="navigation">
-            
-            <ul >
-                <li><a href="{% url 'index' %}">Inicio</a></li>
-                <li><a href="#">Perifericos</a>
-                    <ul>
-                        <li><a class="Mouse" href="{% url 'Mouse' %}">Mouse <span>6</span></a></li>
-                        <li><a class="Teclado" href="{% url 'Teclado' %}">Teclado <span>15</span></a></li>
-                        <li><a class="Audifonos" href="{% url 'Audifonos' %}">Audifonos <span>10</span></a></li>
-                        <li><a class="Parlantes" href="{% url 'Parlantes' %}">Parlantes Pc <span>5</span></a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Almacenamiento</a>
-                    <ul>
-                        <li><a class="SSD" href="{% url 'SSD' %}">Disco SSD <span>12</span></a></li>
-                        <li><a class="HDD" href="{% url 'HDD' %}">Disco HDD <span>10</span></a></li>
-                        <li><a class="NVME" href="{% url 'NVME' %}">NVME <span>13</span></a></li>
-                        <li><a class="USB" href="{% url 'USB' %}">Memorias USB <span>8</span></a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Torres</a>
-                    <ul>
-                        <li><a class="Fuente" href="{% url 'Fuentes' %}">Fuente de poder <span>15</span></a></li>
-                        <li><a class="Board" href="{% url 'Board' %}">Board <span>10</span></a></li>
-                        <li><a class="Procesador" href="{% url 'Procesador' %}">Procesador <span>5</span></a></li>
-                        <li><a class="Ram" href="{% url 'Ram' %}">Memoria Ram <span>20</span></a></li>
-                        <li><a class="Graficas" href="{% url 'Graficas' %}">Tarjetas Graficas <span>50</span></a></li>
-                        <li><a class="Refrigeracion" href="{% url 'Refrigeracion' %}">Refrigeracion <span>30</span></a></li>
-                        <li><a class="Chasis" href="{% url 'Chasis' %}">Chasis <span>40</span></a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'Portatiles' %}">Portatiles</a></li>
-                <li><a href="{% url 'Monitores' %}">Monitores</a></li>
-                <li><a href="#">Marcas</a>
-                    <ul class="">
-                        <li><a href="https://www.logitechg.com/es-roam" target="_blank">Logitech <span>60</span></a></li>
-                        <li><a href="https://latam.msi.com/" target="_blank">MSI <span>70</span></a></li>
-                        <li><a href="https://www.asrock.com/index.es.asp" target="_blank">ASRock <span>80</span></a></li>
-                        <li><a href="https://www.corsair.com/lm/es/" target="_blank">Corsair <span>60</span></a></li>
-                        <li><a href="https://www.nvidia.com/es-la/" target="_blank">Nvidia <span>50</span></a></li>
-                        <li><a href="https://www.amd.com/es" target="_blank">Amd <span>40</span></a></li>
-                        <li><a href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank">Intel </a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'login' %}"><img class="usuario" src="../static/img/usuario.svg" alt="usuario"></a></li>
-                <li> <a href="{% url 'carrito' %}">Mi Carrito <span class="fas fa-shopping-cart"></span> </a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="hero"></div>
-
-    <!-- <div class="wrapper">
-        <i id="left" class="fa-solid fa-angle-left"></i>
-        <div class="carousel">
-            <a href="#"><img class="img1"  src="../static/img/Ofertas/Img1.png" alt="img"></a>
-            <a href="#"><img class="img2" src="../static/img/Ofertas/Img2.png" alt="img"></a>
-            <a href="#"><img class="img3" src="../static/img/Ofertas/Img3.png" alt="img"></a>
-            <a href="#"><img class="img4" src="../static/img/Ofertas/img4.jpg" alt="img"></a>
-            <a href="#"><img class="img5" src="../static/img/Ofertas/img5.jpeg" alt="img"></a>
-            <a href="#"><img class="img6" src="../static/img/Ofertas/img6.jpg" alt="img"></a>
-            <a href="#"><img class="img7" src="../static/img/Ofertas/img7.jpg" alt="img"></a>
-        </div>
-        <i id="rigt" class="fa-solid fa-angle-right"></i>
-    </div>-->
-
-    <!--<H2 class="">Destacados</H2>-->
-
-    {% block content %}
-    <h1>{{message}}</h1>
-<div class="destacados">
-    <div class="container-items">
-        <div class="item">
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h4 class="text-center">{{message}}</h4>
+    <div class="container-item row ">
             {% for core in products %}
-            <div class="col-3 mt-5"></div>
+        <div class="col-3 mt-5">
 
             <!--Producto-->
             <div class="card h-100">
-
                 {% if core.image%}
-            <figure>
-                <img src="{{core.image.url}}" alt="Imagen del Producto" height="300">
-            </figure>
+                <img src="{{core.image.url}}" alt="Imagen del Producto" height="300" width="300" >
                 {% endif %}
-
-                <div class="info-product">
-                    <h5>{{core.nombre_producto}}</h5>
-                    <a href="#" class="btn btn-primary"> See more </a>
-                    <button type="submit" class="btn btn-warning">Agregar al carrito</button>
+                <div class="card-body">
+                    <h5 class="card-title">{{core.nombre_producto}}</h5>
+                    <a href="{%url 'product' core.slug%}" class="btn btn-primary"> See more </a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+            {% endfor %}
     </div>
 </div>
-    {%endblock%}
-    <div class = "PQRS">
-        <a href="{% url 'PQRScliente' %}" target= "_blank"><h5 class="whts">Comentanos tus dudas (PQRS)</h5>
-        </a>
-    </div>
 
-</body>
-</html>
+
+{% endblock %}
+
 
