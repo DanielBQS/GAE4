@@ -1,12 +1,13 @@
 from .models import User
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from import_export.admin import ImportExportModelAdmin
 from .models import Cliente
 
 admin.site.register(User,UserAdmin)
 
 @admin.register(Cliente)
-class ClienteAdmin(admin.ModelAdmin):
+class ClienteAdmin(ImportExportModelAdmin):
     list_display = ('get_first_name', 'get_last_name', 'get_email', 'get_fecha_nacimiento', 'get_direccion')
     list_select_related = ('user',)
 
