@@ -1,0 +1,10 @@
+ <!--Producto-->
+ <div class="card h-100">
+    {% if core.image%}
+    <img src="{{core.image.url}}" alt="Imagen del Producto" height="300" width="300" >
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{core.nombre_producto}}</h5>
+        <a href="{%url 'product' core.slug%}" class="btn btn-primary"> See more </a>
+    </div>
+</div>

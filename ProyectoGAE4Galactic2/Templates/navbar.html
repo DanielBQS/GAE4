@@ -1,0 +1,61 @@
+{% url 'carts:cart' as cart %}
+{% url 'billing_profiles:create' as billing_profiles %}
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark mx-auto">
+    <a href="{% url 'Inicio' %}" class="navbar-brand h1">
+        <img src="../../../static/img/logo.png" alt="Logo de Galactic Gamer" height="50" width="50">
+        Galactic Gamer</a>
+
+    <button type="button" name="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navb">
+        <span class="navbar-toggler-icon"></span> 
+    </button>
+  
+    <div id="navb" class="navbar-collapse collapse justify-content-center d-flex ">
+        <ul class="nav navbar-nav ml-auto">
+          
+            <li class="navbar-item">
+                <a href="{% url 'Contactenos' %}" class="nav-link">Contactenos</a>
+            </li>
+            <li class="navbar-item">
+                <a href="{% url 'AcercaDe' %}" class="nav-link">Informacion</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="navbar-item">
+                    <a href="{% url 'index' %}" class="nav-link">Productos</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'PQRScliente' %}" class="nav-link">PQRS</a>
+                </li>
+
+                <li class="nav-item {% if request.path == cart %}active{% endif %}">
+                    <a class="nav-link" href="{{ cart }}">
+                        Mi Carrito <span class="fas fa-shopping-cart"></span>
+                    </a>
+                </li>
+
+                <li class="nav-item {% if request.path == billing_profiles %}active{% endif %}">
+                    <a class="nav-link" href="{{ billing_profiles }}">
+                        Mis metodos de pago <span class="fab fa-cc-stripe"></span>                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <span class="nav-link"><i class="fas fa-user"></i> {{ user.username }}</span>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'logout' %}" class="nav-link"> Salir <i class="fas fa-sign-out-alt"></i></a>
+                </li>
+              
+            {% else %}
+                <li class="navbar-item">
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                </li>
+              
+            {% endif %}
+            
+        </ul>
+    </div>
+</nav>
+<style>
+
+</style>
+
