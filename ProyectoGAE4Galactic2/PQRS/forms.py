@@ -3,7 +3,7 @@ from .models import PQRS
 
 class PQRSFilterForm(forms.Form):
     ESTADOS_CHOICES = [
-        ('', 'Todos'),  # Opción para mostrar todas las PQRS
+        ('', 'Todos'),  
         ('Pendiente', 'Pendiente'),
         ('En Proceso', 'En Proceso'),
         ('Resuelta', 'Resuelta'),
@@ -12,13 +12,13 @@ class PQRSFilterForm(forms.Form):
     estado = forms.ChoiceField(
         label='Filtrar por Estado',
         choices=ESTADOS_CHOICES,
-        required=False  # El campo no es obligatorio
+        required=False  
     )
 
 
     
 class PQRSForm(forms.ModelForm):
     class Meta:
-        model = PQRS  # Especifica el modelo con el que está relacionado este formulario
+        model = PQRS  
         fields = ['tipoPQRS', 'fechaPQRS', 'DescripcionPQRS']
         

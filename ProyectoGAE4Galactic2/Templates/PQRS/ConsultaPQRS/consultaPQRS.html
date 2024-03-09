@@ -5,7 +5,7 @@
         <h2>Mis PQRS</h2>
     </div>
     <div class="text-end">
-        <!-- Formulario de filtro -->
+        <!--  filtro -->
         <form method="get">
             {% csrf_token %}
             {{ form.estado.label_tag }}
@@ -13,40 +13,43 @@
             <button type="submit" class="btn btn-primary" style="background-color: #259FB8;">Filtrar</button>
         </form>
     </div>
-    <!-- Tabla para mostrar las PQRS -->
-    <table class="table table-bordered">
-        <thead class="table-primary">
-            <tr>
-                <th>Tipo de PQRS</th>
-                <th>Fecha</th>
-                <th>Descripción</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Itera sobre las PQRS del usuario logeado -->
-            {% for pqrs in pqrs_list %}
+  
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-primary">
                 <tr>
-                    <td>{{ pqrs.tipoPQRS }}</td>
-                    <td>{{ pqrs.fechaPQRS }}</td>
-                    <td>{{ pqrs.DescripcionPQRS }}</td>
-                    <td>{{ pqrs.EstadoPQRS }}</td>
-                    <td>
-                        <a href="{% url 'PQRSActualizar' pqrs.pk %}" class="btn btn-warning">Editar</a>
-                        <!--<form action="{% url 'PQRSEliminar' pk=pqrs.pk %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>-->
-                    </td>
+                    <th>Tipo de PQRS</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
-            {% empty %}
-                <!-- Mensaje para el caso en que el usuario no tenga PQRS registradas -->
-                <tr>
-                    <td colspan="4" class="text-center">No tienes PQRS registradas.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <!-- Itera sobre las PQRS del usuario logeado -->
+                {% for pqrs in pqrs_list %}
+                    <tr>
+                        <td>{{ pqrs.tipoPQRS }}</td>
+                        <td>{{ pqrs.fechaPQRS }}</td>
+                        <td>{{ pqrs.DescripcionPQRS }}</td>
+                        <td>{{ pqrs.EstadoPQRS }}</td>
+                        <td>
+                            <a href="{% url 'PQRSActualizar' pqrs.pk %}" class="btn btn-warning">Editar</a>
+                            <!--<form action="{% url 'PQRSEliminar' pk=pqrs.pk %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>-->
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center">No tienes PQRS registradas.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
 
     {% if messages %}
         <div class="alert alert-danger">
