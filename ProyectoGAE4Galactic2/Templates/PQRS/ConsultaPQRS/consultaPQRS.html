@@ -2,13 +2,13 @@
 {% block content %}
 <div class="container">
     <div class="text-center">
-        <h2>Mis PQRS</h2>
+        <h2 style="color: #CCCCCC;">Mis PQRS</h2>
     </div>
     <div class="text-end">
         <!--  filtro -->
         <form method="get">
             {% csrf_token %}
-            {{ form.estado.label_tag }}
+           <p style="color: #CCCCCC;">{{ form.estado.label_tag }}</p> 
             {{ form.estado }}
             <button type="submit" class="btn btn-primary" style="background-color: #259FB8;">Filtrar</button>
         </form>
@@ -34,7 +34,7 @@
                         <td>{{ pqrs.DescripcionPQRS }}</td>
                         <td>{{ pqrs.EstadoPQRS }}</td>
                         <td>
-                            <a href="{% url 'PQRSActualizar' pqrs.pk %}" class="btn btn-warning">Editar</a>
+                            <a href="{% url 'PQRSActualizar' pqrs.pk %}" class="btn btn-info mr-3" style="color: #fff;"  >Editar</a>
                             <!--<form action="{% url 'PQRSEliminar' pk=pqrs.pk %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -43,7 +43,7 @@
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="5" class="text-center">No tienes PQRS registradas.</td>
+                        <td colspan="5" class="text-center" >No tienes PQRS registradas.</td>
                     </tr>
                 {% endfor %}
             </tbody>

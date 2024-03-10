@@ -48,7 +48,8 @@
                         <div class="font-weight-bold mb-3">
                             Subtotal ({{ cart.Productos.count }} productos): <span class="text-danger">{{ cart.subtotal | price_format }}</span>
                         </div>
-                        <a href="#" class="btn btn-warning btn-block">Proceder al pago</a>
+                        <a href="#" class="btn btn-info mr-3" style="color: #fff;" >Proceder al pago</a>
+
                         <a href="{% url 'index' %}" class="btn btn-secondary btn-block mt-2">Seguir comprando</a>
                     </div>
                 </div>
